@@ -35,4 +35,10 @@ public class ResponseDto {
     public static class Error{
         private String message;
     }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Message{
+        private String message;
+    }
 }
