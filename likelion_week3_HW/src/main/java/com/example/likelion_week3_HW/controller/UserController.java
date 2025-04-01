@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("")
+    @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody RequestDto.UserInfo userInfo) {
         try {
             User user = userService.register(userInfo);
