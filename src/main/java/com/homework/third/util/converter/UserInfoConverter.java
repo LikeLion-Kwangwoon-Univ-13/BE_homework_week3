@@ -4,9 +4,30 @@ import java.time.Year;
 
 import org.springframework.stereotype.Component;
 
+import com.homework.third.dto.UserRequest;
+import com.homework.third.model.User;
+import com.homework.third.util.validator.NameValidator;
+import com.homework.third.util.validator.RegistrationNumberValidator;
+
+import lombok.RequiredArgsConstructor;
+
 @Component
+@RequiredArgsConstructor
 public class UserInfoConverter {
-	public int getAge(String registrationNumber) {
+	private final NameValidator nameValidator;
+	private final RegistrationNumberValidator registrationNumberValidator;
+
+	public User toEntity(UserRequest.UserInfoRequest userInfoRequest) {
+		String name = userInfoRequest.getName();
+		String registrationNumber = userInfoRequest.getRegistrationNumber();
+
+		nameValidator.isValid(name);
+		registrationNumberValidator.isValid(registrationNumber);
+
+		return new User(name, getAge(registrationNumber), getGender(registrationNumber));
+	}
+
+	private int getAge(String registrationNumber) {
 		String birthDatePart = registrationNumber.split("-")[0];
 		String personalIdPart = registrationNumber.split("-")[1];
 
@@ -22,7 +43,7 @@ public class UserInfoConverter {
 		return Year.now().getValue() - birthYear;
 	}
 
-	public String getGender(String registrationNumber) {
+	private String getGender(String registrationNumber) {
 		String personalIdPart = registrationNumber.split("-")[1];
 
 		int genderCode = Integer.parseInt(String.valueOf(personalIdPart.charAt(0)));
