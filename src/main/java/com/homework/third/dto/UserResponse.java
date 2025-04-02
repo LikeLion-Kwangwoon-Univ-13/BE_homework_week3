@@ -5,12 +5,10 @@ import java.util.stream.Collectors;
 
 import com.homework.third.model.User;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class UserResponse {
 	@Getter
-	@AllArgsConstructor
 	public static class UserInfoResponse {
 		// 유저 이름
 		private String name;

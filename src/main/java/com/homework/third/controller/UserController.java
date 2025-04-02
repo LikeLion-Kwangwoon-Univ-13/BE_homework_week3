@@ -18,13 +18,13 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 
-	@PostMapping("/user")
+	@PostMapping(path = "/user")
 	public ResponseEntity<UserResponse.UserInfoResponse> showUserInfo(
 		@RequestBody UserRequest.UserInfoRequest userInfoRequest) {
 		return ResponseEntity.status(HttpStatus.OK).body(userService.showUserInfo(userInfoRequest));
 	}
 
-	@GetMapping("/user")
+	@GetMapping(path = "/user")
 	public ResponseEntity<UserResponse.UserInfoList> showUserList() {
 		return ResponseEntity.status(HttpStatus.OK).body(userService.getUserList());
 	}
