@@ -27,7 +27,7 @@ public class UserController {
 	}
 
 	@GetMapping("/user")
-	public ResponseEntity<List<UserResponse.UserInfoResponse>> showUserList() {
+	public ResponseEntity<UserResponse.UserInfoList> showUserList() {
 		return ResponseEntity.status(HttpStatus.OK).body(userService.getUserList());
 	}
 }

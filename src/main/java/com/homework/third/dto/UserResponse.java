@@ -1,5 +1,8 @@
 package com.homework.third.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.homework.third.model.User;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +29,22 @@ public class UserResponse {
 
 		public static UserInfoResponse of(User user) {
 			return new UserInfoResponse(user);
+		}
+	}
+
+	@Getter
+	public  static class UserInfoList{
+		// 유저 정보 리스트
+		private List<UserInfoResponse> userList;
+
+		public UserInfoList(List<User> users){
+			this.userList = users.stream()
+				.map(UserResponse.UserInfoResponse::of)
+				.collect(Collectors.toList());
+		}
+
+		public static UserInfoList of(List<User> users){
+			return new UserInfoList(users);
 		}
 	}
 }

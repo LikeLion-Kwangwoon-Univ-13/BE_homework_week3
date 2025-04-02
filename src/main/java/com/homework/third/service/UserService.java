@@ -34,10 +34,8 @@ public class UserService {
 		return UserResponse.UserInfoResponse.of(user);
 	}
 
-	public List<UserResponse.UserInfoResponse> getUserList() {
+	public UserResponse.UserInfoList getUserList() {
 		// 유저 리스트의 유저들을 응답 형태로 변환하여 반환
-		return this.users.stream()
-			.map(UserResponse.UserInfoResponse::of)
-			.collect(Collectors.toList());
+		return UserResponse.UserInfoList.of(this.users);
 	}
 }
