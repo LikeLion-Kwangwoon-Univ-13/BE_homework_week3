@@ -7,7 +7,10 @@ public class UserRequest {
 	@Getter
 	@NoArgsConstructor
 	public static class UserInfoRequest {
+		// 유저 이름
 		private String name;
+
+		// 유저 주민등록번호
 		private String registrationNumber;
 	}
 }

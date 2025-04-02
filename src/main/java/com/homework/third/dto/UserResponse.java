@@ -9,8 +9,13 @@ public class UserResponse {
 	@Getter
 	@AllArgsConstructor
 	public static class UserInfoResponse {
+		// 유저 이름
 		private String name;
+
+		// 유저 나이
 		private int age;
+
+		// 유저 성별
 		private String gender;
 
 		public UserInfoResponse(User user) {
