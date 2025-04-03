@@ -22,11 +22,16 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<UserResponseDTO> saveUser(
+    public ResponseEntity<?> saveUser(
             @RequestBody UserRequestDTO userRequestDTO
     ){
-        User user = userService.registerUser(userRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new UserResponseDTO(user));
+        try{
+            User user = userService.registerUser(userRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new UserResponseDTO(user));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
     }
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
