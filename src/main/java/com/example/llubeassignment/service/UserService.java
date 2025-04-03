@@ -19,10 +19,14 @@ public class UserService {
     private final RegistrationNumberValidator registrationNumberValidator;
     private final UserInfoConverter userInfoConverter;
 
-    private final List<User> users = new ArrayList<User>();
+    private final List<User> users = new ArrayList<>();
 
-    public List<User> getAllUsers() {
-        return this.users;
+    public List<ResponseDTO> getAllUsers() {
+        List<ResponseDTO> resDTOArray = new ArrayList<>();
+        for (User user : users) {
+            resDTOArray.add(new ResponseDTO(user.getName(), user.getAge(), user.getGender()));
+        }
+        return resDTOArray;
     }
 
     public ResponseDTO register(RegistrationFormDTO userReq) {

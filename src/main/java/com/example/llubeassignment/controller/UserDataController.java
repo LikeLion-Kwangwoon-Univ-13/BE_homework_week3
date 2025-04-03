@@ -1,9 +1,8 @@
 package com.example.llubeassignment.controller;
 
 import com.example.llubeassignment.dto.RegistrationFormDTO;
-import com.example.llubeassignment.entity.User;
+import com.example.llubeassignment.dto.ResponseDTO;
 import com.example.llubeassignment.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +33,7 @@ public class UserDataController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUser() {
+    public ResponseEntity<List<ResponseDTO>> getAllUser() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(userService.getAllUsers());
