@@ -21,7 +21,7 @@ public class UserController {
 	@PostMapping(path = "/user")
 	public ResponseEntity<UserResponse.UserInfoResponse> showUserInfo(
 		@RequestBody UserRequest.UserInfoRequest userInfoRequest) {
-		return ResponseEntity.status(HttpStatus.OK).body(userService.showUserInfo(userInfoRequest));
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.showUserInfo(userInfoRequest));
 	}
 
 	@GetMapping(path = "/user")
